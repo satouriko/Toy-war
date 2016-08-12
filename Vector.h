@@ -7,21 +7,22 @@
 
 #include <vector>
 #include <cstddef>
+//#include "Vector.cpp"
 
 template <typename T>
 class MyVector {
 private:
-    vector<T> a;
-    size_t dim;
+    std::vector<T> a;
+    std::size_t dim;
 public:
-    MyVector(vector<T>::iterator bg, vector<T>::iterator ed);
-    MyVector(T myArray[], size_t length);
-    MyVector(T x, T y);
-    MyVector(T x, T y, T z);
+    MyVector(std::vector<T>::iterator bg, std::vector<T>::iterator ed);
+    MyVector(T myArray[], std::size_t length);
+    MyVector();
+    MyVector(T x, T... xs);
 
-    const vector<T>& get_V() const ;
+    const std::vector<T>& get_V() const ;
     T get_n(unsigned n);
-    size_t get_dim();
+    std::size_t get_dim();
     bool set_n(unsigned n, T x);
 
 

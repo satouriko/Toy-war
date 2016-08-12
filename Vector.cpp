@@ -2,19 +2,19 @@
 // Created by lijiahao on 8/4/16.
 //
 
-export template <typename T> class MyVector;
+export <typename T> class MyVector;
 #include "Vector.h"
 
 MyVector::MyVector(vector<T>::iterator bg, vector<T>::iterator ed) : a(bg, ed), dim(a.size()) { }
 MyVector::MyVector(T myArray[], size_t length) :  a(myArray, myArray + length), dim(length) { }
-MyVector::MyVector(T x, T y): dim(2) {
-    a.push_back(x);
-    a.push_back(y);
+MyVector::MyVector() {
+    dim = cnt;
 }
-MyVector::MyVector(T x, T y, T z): dim(3) {
+MyVector::MyVector(T x, T... xs) {
+    static unsigned cnt = 0;
     a.push_back(x);
-    a.push_back(y);
-    a.push_back(z);
+    ++cnt;
+    MyVector(xs...);
 }
 
 const vector<T>& MyVector::get_V() const {
@@ -37,6 +37,19 @@ bool MyVector::set_n(unsigned n, T x) {
     }
     else
         return false;
+}
+
+ostream& operator<< (ostream& os, const MyVector &v)
+{
+    os << '(' ;
+    for(vector<T>::iterator iter = v.get_V().begin(); iter != v.get_V().end(); ++iter)
+    {
+        os << *iter;
+        if(iter != v.get_V().end() - 1)
+            os << ', ';
+    }
+    os << ")";
+    return os;
 }
 
 operator+ (const MyVector& lhs, const MyVector& rhs)
