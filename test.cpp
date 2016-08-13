@@ -6,8 +6,12 @@ using namespace std;
 
 int main()
 {
-	MyVector<int> test2(2,3);
-	cout << test2 << endl;
+	int array1[] = {1,2,3,4};
+	MyVector<int> test4_1(array1,4);
+	int array2[] = {1,2,3,4};
+	MyVector<int> test4_2(array2,4);
+	cout << test4_1 << '\n' << test4_2 << endl;
+	cout << test4_1 + test4_2 << endl;
 
 	//CLEAR();
 	//HIDE_CURSOR();
