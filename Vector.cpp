@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+
 using namespace std;
 
 template<typename T>
@@ -18,15 +19,81 @@ ostream &operator<<(ostream &os, const vector <T> &v) {
 }
 
 template<typename T>
-vector <T> operator+(const vector <T> &lhs, const vector <T> &rhs) {
-    vector <T> ret(lhs);
+vector <T> &operator+=(vector <T> &lhs, const vector <T> &rhs) {
     if (lhs.size() != rhs.size())
         throw invalid_argument("Size does not equal!");
     else {
-        typename vector<T>::iterator it = ret.begin();
+        typename vector<T>::iterator it = lhs.begin();
         typename vector<T>::const_iterator ir = rhs.begin();
         for (; ir != rhs.end(); ++ir, ++it)
-            *it = *it + *ir;
+            *it += *ir;
     }
+    return lhs;
+}
+
+template<typename T>
+vector <T> operator+(const vector <T> &lhs, const vector <T> &rhs) {
+    vector <T> ret(lhs);
+    ret += rhs;
+    return ret;
+}
+
+template<typename T>
+vector <T> &operator-=(vector <T> &lhs, const vector <T> &rhs) {
+    if (lhs.size() != rhs.size())
+        throw invalid_argument("Size does not equal!");
+    else {
+        typename vector<T>::iterator it = lhs.begin();
+        typename vector<T>::const_iterator ir = rhs.begin();
+        for (; ir != rhs.end(); ++ir, ++it)
+            *it -= *ir;
+    }
+    return lhs;
+}
+
+template<typename T>
+vector <T> operator-(const vector <T> &lhs, const vector <T> &rhs) {
+    vector <T> ret(lhs);
+    ret -= rhs;
+    return ret;
+}
+
+template<typename T>
+vector <T> &operator*=(vector <T> &lhs, const vector <T> &rhs) {
+    if (lhs.size() != rhs.size())
+        throw invalid_argument("Size does not equal!");
+    else {
+        typename vector<T>::iterator it = lhs.begin();
+        typename vector<T>::const_iterator ir = rhs.begin();
+        for (; ir != rhs.end(); ++ir, ++it)
+            *it *= *ir;
+    }
+    return lhs;
+}
+
+template<typename T>
+vector <T> operator*(const vector <T> &lhs, const vector <T> &rhs) {
+    vector <T> ret(lhs);
+    ret *= rhs;
+    return ret;
+}
+
+template<typename T>
+vector <T> &operator/=(vector <T> &lhs, const vector <T> &rhs) {
+    if (lhs.size() != rhs.size())
+        throw invalid_argument("Size does not equal!");
+    else {
+        typename vector<T>::iterator it = lhs.begin();
+        typename vector<T>::const_iterator ir = rhs.begin();
+        for (; ir != rhs.end(); ++ir, ++it)
+            *it /= *ir;
+    }
+    return lhs;
+}
+
+template<typename T>
+vector <T> operator/(const vector <T> &lhs, const vector <T> &rhs) {
+    vector <T> ret(lhs);
+    ret /= rhs;
     return ret;
 }

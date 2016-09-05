@@ -11,7 +11,28 @@ template<typename T>
 std::ostream &operator<<(std::ostream &os, const std::vector <T> &v);
 
 template<typename T>
+std::vector <T> &operator+=(std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
 std::vector <T> operator+(const std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
+std::vector <T> &operator-=(std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
+std::vector <T> operator-(const std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
+std::vector <T> &operator*=(std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
+std::vector <T> operator*(const std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
+std::vector <T> &operator/=(std::vector <T> &lhs, const std::vector <T> &rhs);
+
+template<typename T>
+std::vector <T> operator/(const std::vector <T> &lhs, const std::vector <T> &rhs);
 
 #include "Vector.cpp"
 

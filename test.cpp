@@ -9,6 +9,7 @@ int main() {
     vector<int> test4_1(array1, array1 + 4);
     int array2[] = {1, 2, 3, 4};
     vector<int> test4_2(array2, array2 + 4);
+    test4_1 /= test4_2;
     cout << test4_1 << '\n' << test4_2 << endl;
     cout << test4_1 + test4_2 << endl;
 
